@@ -1,18 +1,11 @@
-<div style="min-width:40px;height:100%;vertical-align: top;"  class="cmd #history# tooltips cmd-widget" data-type="info" data-subtype="binary" data-cmd_id="#id#" data-cmd_uid="#uid#" data-eqLogic_id="#eqLogic_id#" data-eqLogic_id="#eqLogic_id#" title="#collectDate#">
+<div style="min-width:40px;height:100%;vertical-align: top;" class="cmd #history# tooltips cmd-widget" data-type="info" data-subtype="numeric" data-cmd_id="#id#" data-cmd_uid="#uid#" data-eqLogic_id="#eqLogic_id#" data-eqLogic_id="#eqLogic_id#" title="#collectDate#" data-version="#version#">
     <!-- Info Widget
             Basé sur les widget de 		: 
-            Mise à jour 				: JAG 20190829 : Création
+            Mise à jour 				: JAG 20190907 : Normalisation nom images => Merci à mich0111
     -->
-    <div class="title #hide_name#">
-        <div class="cmdName" style="#hideCmdName#">#name_display#</div>
-    </div>
-    <div class="content-sm ">
-        <span class="iconCmd#uid#"></span>
-    </div>
-    <div style="font-weight: bold;font-size : 10px;">
-        <span class="timeCmd#id# timeCmd label label-default value"></span>
-    </div>
-
+    <span style="font-size:12px;#hideCmdName#">#name_display#</span>
+	<div class="iconCmd#uid#"></div>
+    <span class="timeCmd#id# label value" style="font-weight: bold;font-size : 10px;"></span>
 <script>
     jeedom.cmd.update['#id#'] = function(_options){
         // Options de personnalisation avec valeur par defaut
@@ -44,23 +37,23 @@
                     var srcImglogoER    = ('#logo_error#'!='#'+'logo_error#') ? "#logo_error#" : "error";
                     var srcImglogoER_T  = ('#logoER_type#'!='#'+'logoER_type#') ? "#logoER_type#" : "png";
                 // Paramètrage des images
-                    var srcImgValue_0   = ('#logo_0#'!='#'+'logo_0#') ? "#logo_0#" : "baie_fermee";
+                    var srcImgValue_0   = ('#logo_0#'!='#'+'logo_0#') ? "#logo_0#" : "ou_baie2_wh_db_off";
                     var srcImgValue_0_T = ('#logo_0_type#'!='#'+'logo_0_type#') ? "#logo_0_type#" : "png";
-                    var srcImgValue_1   = ('#logo_1#'!='#'+'logo_1#') ? "#logo_1#" : "baie_ouverte-G";
+                    var srcImgValue_1   = ('#logo_1#'!='#'+'logo_1#') ? "#logo_1#" : "ou_baie2_wh_lf_on";
                     var srcImgValue_1_T = ('#logo_1_type#'!='#'+'logo_1_type#') ? "#logo_1_type#" : "png";
-                    var srcImgValue_2   = ('#logo_2#'!='#'+'logo_2#') ? "#logo_2#" : "baie_ouverte-D";
+                    var srcImgValue_2   = ('#logo_2#'!='#'+'logo_2#') ? "#logo_2#" : "ou_baie2_wh_rg_on";
                     var srcImgValue_2_T = ('#logo_2_type#'!='#'+'logo_2_type#') ? "#logo_2_type#" : "png";
-                    var srcImgValue_3   = ('#logo_3#'!='#'+'logo_3#') ? "#logo_3#" : "baie_ouverte";
+                    var srcImgValue_3   = ('#logo_3#'!='#'+'logo_3#') ? "#logo_3#" : "ou_baie2_wh_db_on";
                     var srcImgValue_3_T = ('#logo_3_type#'!='#'+'logo_3_type#') ? "#logo_3_type#" : "png";
-                    var srcImgValue_4   = ('#logo_4#'!='#'+'logo_4#') ? "#logo_4#" : "baie_ouverte";
+                    var srcImgValue_4   = ('#logo_4#'!='#'+'logo_4#') ? "#logo_4#" : "ou_baie2_wh_db_on";
                     var srcImgValue_4_T = ('#logo_4_type#'!='#'+'logo_4_type#') ? "#logo_4_type#" : "png";
-                    var srcImgValue_5   = ('#logo_5#'!='#'+'logo_5#') ? "#logo_5#" : "baie_ouverte";
+                    var srcImgValue_5   = ('#logo_5#'!='#'+'logo_5#') ? "#logo_5#" : "ou_baie2_wh_db_on";
                     var srcImgValue_5_T = ('#logo_5_type#'!='#'+'logo_5_type#') ? "#logo_5_type#" : "png";
-                    var srcImgValue_6   = ('#logo_6#'!='#'+'logo_6#') ? "#logo_6#" : "baie_ouverte";
+                    var srcImgValue_6   = ('#logo_6#'!='#'+'logo_6#') ? "#logo_6#" : "ou_baie2_wh_db_on";
                     var srcImgValue_6_T = ('#logo_6_type#'!='#'+'logo_6_type#') ? "#logo_6_type#" : "png";
-                    var srcImgValue_7   = ('#logo_7#'!='#'+'logo_7#') ? "#logo_7#" : "baie_ouverte";
+                    var srcImgValue_7   = ('#logo_7#'!='#'+'logo_7#') ? "#logo_7#" : "ou_baie2_wh_db_on";
                     var srcImgValue_7_T = ('#logo_7_type#'!='#'+'logo_7_type#') ? "#logo_7_type#" : "png";
-                    var srcImgValue_8   = ('#logo_8#'!='#'+'logo_8#') ? "#logo_8#" : "baie_ouverte";
+                    var srcImgValue_8   = ('#logo_8#'!='#'+'logo_8#') ? "#logo_8#" : "ou_baie2_wh_db_on";
                     var srcImgValue_8_T = ('#logo_8_type#'!='#'+'logo_8_type#') ? "#logo_8_type#" : "png";
 
         // Update
