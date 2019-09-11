@@ -32,7 +32,8 @@
             // Affichage durée changement dernier etat
                     var srcImglogoTime_M  = '#logoTime-M#';
             // Paramétrage des images
-                    var srcImgURL_M       = 'plugins/widget/core/template/dashboard/cmd.info.numeric.Fenetre/';
+                    var srcImgURL_M     = 'plugins/widget/core/template/dashboard/cmd.action.other.Multi-action-Defaut/fenetre/';
+                    var srcImgURL_M_ER  = 'plugins/widget/core/template/dashboard/cmd.action.other.Multi-action-Defaut/error/';
                 // Paramètrage du logo Erreur
                     var srcImglogoER    = ('#logo_error#'!='#'+'logo_error#') ? "#logo_error#" : "er_ou1_or";
                     var srcImglogoER_T  = ('#logoER_type#'!='#'+'logoER_type#') ? "#logoER_type#" : "png";
@@ -90,6 +91,7 @@
             } else {
                 srcPictureID_M = srcImglogoER;
                 srcImglogo_T_M = srcImglogoER_T;
+                srcImgURL_M    = srcImgURL_M_ER;
             }
         // Update IMG
             $('.cmd[data-cmd_uid=#uid#] .iconCmd#uid#').empty().append('<img src="'+srcImgURL_M +srcPictureID_M +'.'+ srcImglogo_T_M+'" '+srcImgSize_M+'>');
