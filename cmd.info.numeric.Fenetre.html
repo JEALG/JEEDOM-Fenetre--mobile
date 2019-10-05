@@ -1,11 +1,13 @@
-<div style="min-width:40px;height:100%;vertical-align: top;" class="cmd #history# tooltips cmd-widget" data-type="info" data-subtype="numeric" data-cmd_id="#id#" data-cmd_uid="#uid#" data-eqLogic_id="#eqLogic_id#" data-eqLogic_id="#eqLogic_id#" title="#collectDate#" data-version="#version#">
-    <!-- Info Widget
-            Basé sur les widget de 		: 
-            Mise à jour 				: JAG 20190907 : Normalisation nom images => Merci à mich0111
-    -->
-    <span style="font-size:12px;#hideCmdName#">#name_display#</span>
-	<div class="iconCmd#uid#"></div>
-    <span class="timeCmd#id# label value" style="font-weight: bold;font-size : 10px;"></span>
+<div style="width:90px;height:100%;vertical-align: top;" data-version="#version#" data-eqLogic_id="#eqLogic_id#" class="cmd #history#" data-type="info" data-subtype="numeric" data-cmd_id="#id#" data-cmd_uid="#uid#" title="#collectDate#">
+     <!-- Info Widget
+        Basé sur les widget de 	: 
+        Mise à jour             : JAG 20191005 : Correction Bug présentation
+	-->
+    <center>
+        <div class="cmdName #hide_name#">#name_display</div>
+        <div class="iconCmd#uid#"></div>
+        <span class="timeCmd#id# timeCmd"></span>
+    </center>
 <script>
     jeedom.cmd.update['#id#'] = function(_options){
         // Options de personnalisation avec valeur par defaut
