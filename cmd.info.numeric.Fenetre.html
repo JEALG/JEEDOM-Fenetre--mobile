@@ -1,12 +1,13 @@
 <div style="width:90px;height:100%;vertical-align: top;" data-version="#version#" data-eqLogic_id="#eqLogic_id#" class="cmd #history#" data-type="info" data-subtype="numeric" data-cmd_id="#id#" data-cmd_uid="#uid#" title="#collectDate#">
     <!-- Info Widget
-        Basé sur les widget de 	: 
-        Mise à jour             : JAG 20191005 : Correction Bug présentation
+        Basé sur les widget de 	    :
+        Widget pour le Core         : V4
+        Mise à jour	                : JAG 20200502 => Ajout Version Core
 	-->
     <center>
         <div class="cmdName #hide_name#">#name_display#</div>
         <div class="iconCmd#uid#"></div>
-        <span class="timeCmd#id# timeCmd"></span>
+        <span class="timeCmd#id# timeCmd label label-default value" data-type="info" data-cmd_id="#value_id#"></span>
     </center>
     <script>
         jeedom.cmd.update['#id#'] = function(_options) {
@@ -32,7 +33,7 @@
             var value_7 = (is_numeric('#valeur_7#')) ? parseFloat('#valeur_7#') : 7;
             var value_8 = (is_numeric('#valeur_8#')) ? parseFloat('#valeur_8#') : 8;
             // Affichage durée changement dernier etat
-            var srcImglogoTime_M = '#logoTime-M#';
+            var srcImglogoTime = '#logoTime#';
             // Paramétrage des images
             var srcImgURL_M = 'data/customTemplates/dashboard/cmd.action.other.Multi-action-Defaut/fenetre/';
             var srcImgURL_M_ER = 'data/customTemplates/dashboard/cmd.action.other.Multi-action-Defaut/error/';
@@ -101,17 +102,20 @@
 
             // Derniere durée changement dernier etat
             //Merci @Salvialf pour le code
-            if (srcImglogoTime == "duree") {
-                jeedom.cmd.displayDuration(_options.valueDate, $('.cmd[data-cmd_id=#id#] .timeCmd#id#'));
+            if (srcImglogoTime == "duree" || srcImglogoTime == "durée") {
+                jeedom.cmd.displayDuration(_options.valueDate, cmd.find('.timeCmd'));
             } else if (srcImglogoTime == "date") {
-                var srcdate = new Date(_options.valueDate);
-                var srcformat = $.datepicker.formatDate('D dd/mm', srcdate);
-                var srctime = "à " + srcdate.getHours() + ":" + (srcdate.getMinutes() < 10 ? '0' : '') + srcdate.getMinutes();
-                $('.cmd[data-cmd_id=#id#] .timeCmd#id#').empty().html(srcformat + '<br>' + srctime);
+                var srcweek = ['dim.', 'lun.', 'mar.', 'mer.', 'jeu.', 'ven.', 'sam.'];
+                var srcdate = new Date(_options.valueDate.replace(' ', 'T'));
+                var srcT = _options.valueDate.split(/[- :]/);
+                var srcformat = srcweek[srcdate.getDay()] + " " + srcT[2] + "/" + srcT[1];
+                var srctime = "à " + srcT[3] + ":" + srcT[4];
+                cmd.find('.timeCmd').html(srcformat + '<br>' + srctime);
             } else if (srcImglogoTime == "heure") {
-                var srcdate = new Date(_options.valueDate);
-                var srctime = "à " + srcdate.getHours() + ":" + (srcdate.getMinutes() < 10 ? '0' : '') + srcdate.getMinutes() + ":" + (srcdate.getSeconds() < 10 ? '0' : '') + srcdate.getSeconds() + "";
-                $('.cmd[data-cmd_id=#id#] .timeCmd#id#').empty().html(srctime);
+                var srcdate = new Date(_options.valueDate.replace(' ', 'T'));
+                var srcT = _options.valueDate.split(/[- :]/);
+                var srctime = "à " + srcT[3] + ":" + srcT[4] + ":" + srcT[5];
+                cmd.find('.timeCmd').html(srctime);
             };
             $('.cmd[data-cmd_uid=#uid#]').attr('title', 'Valeur du ' + _options.valueDate + ', collectée le ' + _options.collectDate);
         }
@@ -121,5 +125,6 @@
             collectDate: '#collectDate#',
             alertLevel: '#alertLevel#'
         });
+
     </script>
 </div>
