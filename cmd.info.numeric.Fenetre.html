@@ -1,120 +1,130 @@
 <div style="width:90px;height:100%;vertical-align: top;" data-version="#version#" data-eqLogic_id="#eqLogic_id#" class="cmd #history#" data-type="info" data-subtype="numeric" data-cmd_id="#id#" data-cmd_uid="#uid#" title="#collectDate#">
-     <!-- Info Widget
-        Basé sur les widget de 	: 
-        Mise à jour             : JAG 20191005 : Correction Bug présentation
+    <!-- Info Widget
+        Widget de           : JAG
+        Widget pour le Core : V4
+        Mise à jour         : JAG 20200502 => Ajout Version Core
 	-->
     <center>
         <div class="cmdName #hide_name#">#name_display#</div>
         <div class="iconCmd#uid#"></div>
-        <span class="timeCmd#id# timeCmd"></span>
+        <span class="timeCmd#id# timeCmd label label-default value" data-type="info" data-cmd_id="#value_id#"></span>
     </center>
     <script>
-        jeedom.cmd.update['#id#'] = function(_options){
+        jeedom.cmd.update['#id#'] = function(_options) {
             // Options de personnalisation avec valeur par defaut
-                // Paramètre "sizeh" & "sizew"
-                var srcImgHeight_M	   = is_numeric('#sizeh-M#') ? parseFloat('#sizeh-M#'):40;
-                var srcImgWidth_M 	   = is_numeric('#sizew-M#') ? parseFloat('#sizew-M#'):40;
-                // Type de taille
-                var srcImgpourcent_M    = ('#Pourcentage-M#'!='#'+'Pourcentage-M#') ? "#Pourcentage-M#" : "NO";
-                if (srcImgpourcent_M  == "NO") {
-                    var srcImgSize_M    = 'height='+srcImgHeight_M+'px width='+srcImgWidth_M+'px';
-                } else if (srcImgpourcent_M  == "YES") {
-                    var srcImgSize_M    = 'height='+srcImgHeight_M+'% width='+srcImgWidth_M+'%';
-                }
+            // Paramètre "sizeh" & "sizew"
+            var srcImgHeight_M = is_numeric('#sizeh-M#') ? parseFloat('#sizeh-M#') : 40;
+            var srcImgWidth_M = is_numeric('#sizew-M#') ? parseFloat('#sizew-M#') : 40;
+            // Type de taille
+            var srcImgpourcent_M = ('#Pourcentage-M#' != '#' + 'Pourcentage-M#') ? "#Pourcentage-M#" : "NO";
+            if (srcImgpourcent_M == "NO") {
+                var srcImgSize_M = 'height=' + srcImgHeight_M + 'px width=' + srcImgWidth_M + 'px';
+            } else if (srcImgpourcent_M == "YES") {
+                var srcImgSize_M = 'height=' + srcImgHeight_M + '% width=' + srcImgWidth_M + '%';
+            }
             // Paramétrage Niveau
-                    var value_0         = (is_numeric('#valeur_0#')) ? parseFloat('#valeur_0#') : 0;
-                    var value_1         = (is_numeric('#valeur_1#')) ? parseFloat('#valeur_1#') : 1;
-                    var value_2         = (is_numeric('#valeur_2#')) ? parseFloat('#valeur_2#') : 2;
-                    var value_3         = (is_numeric('#valeur_3#')) ? parseFloat('#valeur_3#') : 3;
-                    var value_4         = (is_numeric('#valeur_4#')) ? parseFloat('#valeur_4#') : 4;
-                    var value_5         = (is_numeric('#valeur_5#')) ? parseFloat('#valeur_5#') : 5;
-                    var value_6         = (is_numeric('#valeur_6#')) ? parseFloat('#valeur_6#') : 6;
-                    var value_7         = (is_numeric('#valeur_7#')) ? parseFloat('#valeur_7#') : 7;
-                    var value_8         = (is_numeric('#valeur_8#')) ? parseFloat('#valeur_8#') : 8;
+            var value_0 = (is_numeric('#valeur_0#')) ? parseFloat('#valeur_0#') : 0;
+            var value_1 = (is_numeric('#valeur_1#')) ? parseFloat('#valeur_1#') : 1;
+            var value_2 = (is_numeric('#valeur_2#')) ? parseFloat('#valeur_2#') : 2;
+            var value_3 = (is_numeric('#valeur_3#')) ? parseFloat('#valeur_3#') : 3;
+            var value_4 = (is_numeric('#valeur_4#')) ? parseFloat('#valeur_4#') : 4;
+            var value_5 = (is_numeric('#valeur_5#')) ? parseFloat('#valeur_5#') : 5;
+            var value_6 = (is_numeric('#valeur_6#')) ? parseFloat('#valeur_6#') : 6;
+            var value_7 = (is_numeric('#valeur_7#')) ? parseFloat('#valeur_7#') : 7;
+            var value_8 = (is_numeric('#valeur_8#')) ? parseFloat('#valeur_8#') : 8;
             // Affichage durée changement dernier etat
-                    var srcImglogoTime_M  = '#logoTime-M#';
+            var srcImglogoTime = '#logoTime#';
             // Paramétrage des images
-                    var srcImgURL_M     = 'data/customTemplates/dashboard/cmd.action.other.Multi-action-Defaut/fenetre/';
-                    var srcImgURL_M_ER  = 'data/customTemplates/dashboard/cmd.action.other.Multi-action-Defaut/error/';
-                // Paramètrage du logo Erreur
-                    var srcImglogoER    = ('#logo_error#'!='#'+'logo_error#') ? "#logo_error#" : "er_ou1_or";
-                    var srcImglogoER_T  = ('#logoER_type#'!='#'+'logoER_type#') ? "#logoER_type#" : "png";
-                // Paramètrage des images
-                    var srcImgValue_0   = ('#logo_0#'!='#'+'logo_0#') ? "#logo_0#" : "ou_baie2_wh_db_off";
-                    var srcImgValue_0_T = ('#logo_0_type#'!='#'+'logo_0_type#') ? "#logo_0_type#" : "png";
-                    var srcImgValue_1   = ('#logo_1#'!='#'+'logo_1#') ? "#logo_1#" : "ou_baie2_wh_lf_on";
-                    var srcImgValue_1_T = ('#logo_1_type#'!='#'+'logo_1_type#') ? "#logo_1_type#" : "png";
-                    var srcImgValue_2   = ('#logo_2#'!='#'+'logo_2#') ? "#logo_2#" : "ou_baie2_wh_rg_on";
-                    var srcImgValue_2_T = ('#logo_2_type#'!='#'+'logo_2_type#') ? "#logo_2_type#" : "png";
-                    var srcImgValue_3   = ('#logo_3#'!='#'+'logo_3#') ? "#logo_3#" : "ou_baie2_wh_db_on";
-                    var srcImgValue_3_T = ('#logo_3_type#'!='#'+'logo_3_type#') ? "#logo_3_type#" : "png";
-                    var srcImgValue_4   = ('#logo_4#'!='#'+'logo_4#') ? "#logo_4#" : "ou_baie2_wh_db_on";
-                    var srcImgValue_4_T = ('#logo_4_type#'!='#'+'logo_4_type#') ? "#logo_4_type#" : "png";
-                    var srcImgValue_5   = ('#logo_5#'!='#'+'logo_5#') ? "#logo_5#" : "ou_baie2_wh_db_on";
-                    var srcImgValue_5_T = ('#logo_5_type#'!='#'+'logo_5_type#') ? "#logo_5_type#" : "png";
-                    var srcImgValue_6   = ('#logo_6#'!='#'+'logo_6#') ? "#logo_6#" : "ou_baie2_wh_db_on";
-                    var srcImgValue_6_T = ('#logo_6_type#'!='#'+'logo_6_type#') ? "#logo_6_type#" : "png";
-                    var srcImgValue_7   = ('#logo_7#'!='#'+'logo_7#') ? "#logo_7#" : "ou_baie2_wh_db_on";
-                    var srcImgValue_7_T = ('#logo_7_type#'!='#'+'logo_7_type#') ? "#logo_7_type#" : "png";
-                    var srcImgValue_8   = ('#logo_8#'!='#'+'logo_8#') ? "#logo_8#" : "ou_baie2_wh_db_on";
-                    var srcImgValue_8_T = ('#logo_8_type#'!='#'+'logo_8_type#') ? "#logo_8_type#" : "png";
+            var srcImgURL_M = 'data/customTemplates/dashboard/cmd.action.other.Multi-action-Defaut/fenetre/';
+            var srcImgURL_M_ER = 'data/customTemplates/dashboard/cmd.action.other.Multi-action-Defaut/error/';
+            // Paramètrage du logo Erreur
+            var srcImglogoER = ('#logo_error#' != '#' + 'logo_error#') ? "#logo_error#" : "er_ou1_or";
+            var srcImglogoER_T = ('#logoER_type#' != '#' + 'logoER_type#') ? "#logoER_type#" : "png";
+            // Paramètrage des images
+            var srcImgValue_0 = ('#logo_0#' != '#' + 'logo_0#') ? "#logo_0#" : "ou_baie2_wh_db_off";
+            var srcImgValue_0_T = ('#logo_0_type#' != '#' + 'logo_0_type#') ? "#logo_0_type#" : "png";
+            var srcImgValue_1 = ('#logo_1#' != '#' + 'logo_1#') ? "#logo_1#" : "ou_baie2_wh_lf_on";
+            var srcImgValue_1_T = ('#logo_1_type#' != '#' + 'logo_1_type#') ? "#logo_1_type#" : "png";
+            var srcImgValue_2 = ('#logo_2#' != '#' + 'logo_2#') ? "#logo_2#" : "ou_baie2_wh_rg_on";
+            var srcImgValue_2_T = ('#logo_2_type#' != '#' + 'logo_2_type#') ? "#logo_2_type#" : "png";
+            var srcImgValue_3 = ('#logo_3#' != '#' + 'logo_3#') ? "#logo_3#" : "ou_baie2_wh_db_on";
+            var srcImgValue_3_T = ('#logo_3_type#' != '#' + 'logo_3_type#') ? "#logo_3_type#" : "png";
+            var srcImgValue_4 = ('#logo_4#' != '#' + 'logo_4#') ? "#logo_4#" : "ou_baie2_wh_db_on";
+            var srcImgValue_4_T = ('#logo_4_type#' != '#' + 'logo_4_type#') ? "#logo_4_type#" : "png";
+            var srcImgValue_5 = ('#logo_5#' != '#' + 'logo_5#') ? "#logo_5#" : "ou_baie2_wh_db_on";
+            var srcImgValue_5_T = ('#logo_5_type#' != '#' + 'logo_5_type#') ? "#logo_5_type#" : "png";
+            var srcImgValue_6 = ('#logo_6#' != '#' + 'logo_6#') ? "#logo_6#" : "ou_baie2_wh_db_on";
+            var srcImgValue_6_T = ('#logo_6_type#' != '#' + 'logo_6_type#') ? "#logo_6_type#" : "png";
+            var srcImgValue_7 = ('#logo_7#' != '#' + 'logo_7#') ? "#logo_7#" : "ou_baie2_wh_db_on";
+            var srcImgValue_7_T = ('#logo_7_type#' != '#' + 'logo_7_type#') ? "#logo_7_type#" : "png";
+            var srcImgValue_8 = ('#logo_8#' != '#' + 'logo_8#') ? "#logo_8#" : "ou_baie2_wh_db_on";
+            var srcImgValue_8_T = ('#logo_8_type#' != '#' + 'logo_8_type#') ? "#logo_8_type#" : "png";
 
-        // Update
+            // Update
             var srcPictureID;
             var srcImglogo_T;
             var State = parseFloat(_options.display_value);
-            if (State == value_0){
+            if (State == value_0) {
                 srcPictureID_M = srcImgValue_0;
                 srcImglogo_T_M = srcImgValue_0_T;
-            } else if (State == value_1){
+            } else if (State == value_1) {
                 srcPictureID_M = srcImgValue_1;
                 srcImglogo_T_M = srcImgValue_1_T;
-            } else if (State == value_2){
+            } else if (State == value_2) {
                 srcPictureID_M = srcImgValue_2;
                 srcImglogo_T_M = srcImgValue_2_T;
-            } else if (State == value_3){
+            } else if (State == value_3) {
                 srcPictureID_M = srcImgValue_3;
                 srcImglogo_T_M = srcImgValue_3_T;
-            } else if (State == value_4){
+            } else if (State == value_4) {
                 srcPictureID_M = srcImgValue_4;
                 srcImglogo_T_M = srcImgValue_4_T;
-            } else if (State == value_5){
+            } else if (State == value_5) {
                 srcPictureID_M = srcImgValue_5;
                 srcImglogo_T_M = srcImgValue_5_T;
-            } else if (State == value_6){
+            } else if (State == value_6) {
                 srcPictureID_M = srcImgValue_6;
                 srcImglogo_T_M = srcImgValue_6_T;
-            } else if (State == value_7){
+            } else if (State == value_7) {
                 srcPictureID_M = srcImgValue_7;
                 srcImglogo_T_M = srcImgValue_7_T;
-            } else if (State == value_8){
+            } else if (State == value_8) {
                 srcPictureID_M = srcImgValue_8;
                 srcImglogo_T_M = srcImgValue_8_T;
             } else {
                 srcPictureID_M = srcImglogoER;
                 srcImglogo_T_M = srcImglogoER_T;
-                srcImgURL_M    = srcImgURL_M_ER;
+                srcImgURL_M = srcImgURL_M_ER;
             }
-        // Update IMG
-            $('.cmd[data-cmd_uid=#uid#] .iconCmd#uid#').empty().append('<img src="'+srcImgURL_M +srcPictureID_M +'.'+ srcImglogo_T_M+'" '+srcImgSize_M+'>');
-            $('.cmd[data-cmd_uid=#uid#] .value#uid#').empty().append(_options.display_value+' '+'#unite#');
-        
-        // Derniere durée changement dernier etat
+            // Update IMG
+            $('.cmd[data-cmd_uid=#uid#] .iconCmd#uid#').empty().append('<img src="' + srcImgURL_M + srcPictureID_M + '.' + srcImglogo_T_M + '" ' + srcImgSize_M + '>');
+            $('.cmd[data-cmd_uid=#uid#] .value#uid#').empty().append(_options.display_value + ' ' + '#unite#');
+
+            // Derniere durée changement dernier etat
             //Merci @Salvialf pour le code
-                if (srcImglogoTime == "duree") {
-                    jeedom.cmd.displayDuration(_options.valueDate, $('.cmd[data-cmd_id=#id#] .timeCmd#id#'));
-                } else if (srcImglogoTime == "date") {
-                    var srcdate     = new Date(_options.valueDate);
-                    var srcformat   = $.datepicker.formatDate('D dd/mm', srcdate);
-                    var srctime     = "à "+srcdate.getHours()+":"+(srcdate.getMinutes()<10?'0':'')+srcdate.getMinutes();
-                    $('.cmd[data-cmd_id=#id#] .timeCmd#id#').empty().html(srcformat+'<br>'+srctime);
-                } else if (srcImglogoTime == "heure") {
-                    var srcdate     = new Date(_options.valueDate);
-                    var srctime     = "à "+srcdate.getHours()+":"+(srcdate.getMinutes()<10?'0':'')+srcdate.getMinutes()+":"+(srcdate.getSeconds()<10?'0':'')+srcdate.getSeconds()+"";
-                    $('.cmd[data-cmd_id=#id#] .timeCmd#id#').empty().html(srctime);
-                };
-            $('.cmd[data-cmd_uid=#uid#]').attr('title','Valeur du '+_options.valueDate+', collectée le '+_options.collectDate);
-    }
-    jeedom.cmd.update['#id#']({display_value:'#state#',valueDate:'#valueDate#',collectDate:'#collectDate#',alertLevel:'#alertLevel#'});
-</script>
+            if (srcImglogoTime == "duree" || srcImglogoTime == "durée") {
+                jeedom.cmd.displayDuration(_options.valueDate, cmd.find('.timeCmd'));
+            } else if (srcImglogoTime == "date") {
+                var srcweek = ['dim.', 'lun.', 'mar.', 'mer.', 'jeu.', 'ven.', 'sam.'];
+                var srcdate = new Date(_options.valueDate.replace(' ', 'T'));
+                var srcT = _options.valueDate.split(/[- :]/);
+                var srcformat = srcweek[srcdate.getDay()] + " " + srcT[2] + "/" + srcT[1];
+                var srctime = "à " + srcT[3] + ":" + srcT[4];
+                cmd.find('.timeCmd').html(srcformat + '<br>' + srctime);
+            } else if (srcImglogoTime == "heure") {
+                var srcdate = new Date(_options.valueDate.replace(' ', 'T'));
+                var srcT = _options.valueDate.split(/[- :]/);
+                var srctime = "à " + srcT[3] + ":" + srcT[4] + ":" + srcT[5];
+                cmd.find('.timeCmd').html(srctime);
+            };
+            $('.cmd[data-cmd_uid=#uid#]').attr('title', 'Valeur du ' + _options.valueDate + ', collectée le ' + _options.collectDate);
+        }
+        jeedom.cmd.update['#id#']({
+            display_value: '#state#',
+            valueDate: '#valueDate#',
+            collectDate: '#collectDate#',
+            alertLevel: '#alertLevel#'
+        });
+
+    </script>
 </div>
